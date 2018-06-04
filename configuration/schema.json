@@ -1,0 +1,911 @@
+{
+    "0": {
+        "id": 0,
+        "name": "my_old_PC",
+        "services": {
+            "3": {
+                "id": 3,
+                "name": "serial_comm_hub",
+                "type": "SERIAL_COMM_HUB",
+                "dataFields": {
+                    "com": {
+                        "id": 10042,
+                        "name": "com",
+                        "type": "OPTION",
+                        "options": {
+                            "9600": {
+                                "direction": "BI_DIRECTIONAL",
+                                "signalType": "SERIAL_COMM",
+                                "dataType": "SERIAL_COMM",
+                                "misk": "HUB",
+                                "baudRate": "9600"
+                            },
+                            "38400": {
+                                "direction": "BI_DIRECTIONAL",
+                                "signalType": "SERIAL_COMM",
+                                "dataType": "SERIAL_COMM",
+                                "misk": "HUB",
+                                "baudRate": "38400"
+                            },
+                            "NONE": {
+                                "direction": "NONE",
+                                "dataType": "SERIAL_COMM"
+                            }
+                        },
+                        "value": "9600",
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 0,
+                        "tags": {
+                            "direction": "BI_DIRECTIONAL",
+                            "signalType": "SERIAL_COMM",
+                            "dataType": "SERIAL_COMM",
+                            "misk": "HUB",
+                            "baudRate": "9600"
+                        }
+                    }
+                },
+                "availableCommands": {},
+                "parentId": 0,
+                "blockCategory": "SERVICE"
+            },
+            "4": {
+                "id": 4,
+                "name": "web_server",
+                "type": "WEB_SERVER",
+                "dataFields": {
+                    "address": {
+                        "name": "address",
+                        "type": "STRING",
+                        "value": "localhost",
+                        "id": 10043
+                    }
+                },
+                "parentId": 0,
+                "blockCategory": "SERVICE"
+            }
+        },
+        "modules": {}
+    },
+    "1": {
+        "id": 1,
+        "name": "Remote",
+        "services": {
+            "5": {
+                "id": 5,
+                "name": "serial_comm_node",
+                "type": "SERIAL_COMM_NODE",
+                "dataFields": {
+                    "com": {
+                        "id": 10044,
+                        "name": "com",
+                        "type": "OPTION",
+                        "options": {
+                            "9600": {
+                                "direction": "BI_DIRECTIONAL",
+                                "signalType": "SERIAL_COMM",
+                                "dataType": "SERIAL_COMM",
+                                "baudRate": "9600"
+                            },
+                            "38400": {
+                                "direction": "BI_DIRECTIONAL",
+                                "signalType": "SERIAL_COMM",
+                                "dataType": "SERIAL_COMM",
+                                "baudRate": "38400"
+                            },
+                            "NONE": {
+                                "direction": "NONE",
+                                "dataType": "SERIAL_COMM"
+                            }
+                        },
+                        "value": "9600",
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 0,
+                        "tags": {
+                            "direction": "BI_DIRECTIONAL",
+                            "signalType": "SERIAL_COMM",
+                            "dataType": "SERIAL_COMM",
+                            "baudRate": "9600"
+                        }
+                    }
+                },
+                "availableCommands": {},
+                "parentId": 1,
+                "blockCategory": "SERVICE"
+            }
+        },
+        "modules": {
+            "8": {
+                "id": 8,
+                "name": "con_servo_control",
+                "type": "ARDUINO_CONTINIOUS_SERVO_PIN_CONTROLLER",
+                "dataFields": {
+                    "pin": {
+                        "id": 10048,
+                        "name": "pin",
+                        "type": "RESOURCE_CONSUMER",
+                        "value": "9",
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 0,
+                        "tags": {
+                            "resourceConsumer": true,
+                            "resourceType": [
+                                "DIGITAL_IO"
+                            ]
+                        },
+                        "resourceName": "D9",
+                        "resourceCode": "9"
+                    },
+                    "data": {
+                        "id": 10049,
+                        "name": "data",
+                        "type": "INTEGER",
+                        "value": 0,
+                        "group": null,
+                        "link": "16.out",
+                        "readOnly": false,
+                        "dataSizeClass": 1,
+                        "tags": {
+                            "signalType": "data"
+                        },
+                        "control": "SYNC_OUT"
+                    }
+                },
+                "availableCommands": {},
+                "parentId": 1,
+                "blockCategory": "DRIVER"
+            },
+            "9": {
+                "id": 9,
+                "name": "con_servo_control9",
+                "type": "ARDUINO_CONTINIOUS_SERVO_PIN_CONTROLLER",
+                "dataFields": {
+                    "pin": {
+                        "id": 10050,
+                        "name": "pin",
+                        "type": "RESOURCE_CONSUMER",
+                        "value": "6",
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 0,
+                        "tags": {
+                            "resourceConsumer": true,
+                            "resourceType": [
+                                "DIGITAL_IO"
+                            ]
+                        },
+                        "resourceName": "D6",
+                        "resourceCode": "6"
+                    },
+                    "data": {
+                        "id": 10051,
+                        "name": "data",
+                        "type": "INTEGER",
+                        "value": 0,
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 1,
+                        "tags": {
+                            "signalType": "data"
+                        }
+                    }
+                },
+                "availableCommands": {},
+                "parentId": 1,
+                "blockCategory": "DRIVER"
+            },
+            "10": {
+                "id": 10,
+                "name": "servo_control",
+                "type": "ARDUINO_SERVO_PIN_CONTROLLER",
+                "dataFields": {
+                    "pin": {
+                        "id": 10052,
+                        "name": "pin",
+                        "type": "RESOURCE_CONSUMER",
+                        "value": "5",
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 0,
+                        "tags": {
+                            "resourceConsumer": true,
+                            "resourceType": [
+                                "DIGITAL_IO"
+                            ]
+                        },
+                        "resourceName": "D5",
+                        "resourceCode": "5"
+                    },
+                    "data": {
+                        "id": 10053,
+                        "name": "data",
+                        "type": "INTEGER",
+                        "value": 0,
+                        "group": null,
+                        "link": "14.out",
+                        "readOnly": false,
+                        "dataSizeClass": 1,
+                        "tags": {
+                            "signalType": "data"
+                        },
+                        "control": "SYNC_OUT"
+                    }
+                },
+                "availableCommands": {},
+                "parentId": 1,
+                "blockCategory": "DRIVER"
+            },
+            "11": {
+                "id": 11,
+                "name": "servo_control11",
+                "type": "ARDUINO_SERVO_PIN_CONTROLLER",
+                "dataFields": {
+                    "pin": {
+                        "id": 10054,
+                        "name": "pin",
+                        "type": "RESOURCE_CONSUMER",
+                        "value": "10",
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 0,
+                        "tags": {
+                            "resourceConsumer": true,
+                            "resourceType": [
+                                "DIGITAL_IO"
+                            ]
+                        },
+                        "resourceName": "D10",
+                        "resourceCode": "10"
+                    },
+                    "data": {
+                        "id": 10055,
+                        "name": "data",
+                        "type": "INTEGER",
+                        "value": 0,
+                        "group": null,
+                        "link": "15.out",
+                        "readOnly": false,
+                        "dataSizeClass": 1,
+                        "tags": {
+                            "signalType": "data"
+                        },
+                        "control": "SYNC_OUT"
+                    }
+                },
+                "availableCommands": {},
+                "parentId": 1,
+                "blockCategory": "DRIVER"
+            }
+        },
+        "commVectorInbound": [
+            {
+                "elementId": "8",
+                "elementName": "con_servo_control",
+                "portId": 10049,
+                "portName": "data",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "9",
+                "elementName": "con_servo_control9",
+                "portId": 10051,
+                "portName": "data",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "10",
+                "elementName": "servo_control",
+                "portId": 10053,
+                "portName": "data",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "11",
+                "elementName": "servo_control11",
+                "portId": 10055,
+                "portName": "data",
+                "elementPortDataSize": 1
+            }
+        ],
+        "commVectorOutbound": [
+            {
+                "elementId": "8",
+                "elementName": "con_servo_control",
+                "portId": 10049,
+                "portName": "data",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "9",
+                "elementName": "con_servo_control9",
+                "portId": 10051,
+                "portName": "data",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "10",
+                "elementName": "servo_control",
+                "portId": 10053,
+                "portName": "data",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "11",
+                "elementName": "servo_control11",
+                "portId": 10055,
+                "portName": "data",
+                "elementPortDataSize": 1
+            }
+        ]
+    },
+    "2": {
+        "id": 2,
+        "name": "Robot",
+        "services": {
+            "6": {
+                "id": 6,
+                "name": "serial_comm_node6",
+                "type": "SERIAL_COMM_NODE",
+                "dataFields": {
+                    "com": {
+                        "id": 10045,
+                        "name": "com",
+                        "type": "OPTION",
+                        "options": {
+                            "9600": {
+                                "direction": "BI_DIRECTIONAL",
+                                "signalType": "SERIAL_COMM",
+                                "dataType": "SERIAL_COMM",
+                                "baudRate": "9600"
+                            },
+                            "38400": {
+                                "direction": "BI_DIRECTIONAL",
+                                "signalType": "SERIAL_COMM",
+                                "dataType": "SERIAL_COMM",
+                                "baudRate": "38400"
+                            },
+                            "NONE": {
+                                "direction": "NONE",
+                                "dataType": "SERIAL_COMM"
+                            }
+                        },
+                        "value": "9600",
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 0,
+                        "tags": {
+                            "direction": "BI_DIRECTIONAL",
+                            "signalType": "SERIAL_COMM",
+                            "dataType": "SERIAL_COMM",
+                            "baudRate": "9600"
+                        }
+                    }
+                },
+                "availableCommands": {},
+                "parentId": 2,
+                "blockCategory": "SERVICE"
+            }
+        },
+        "modules": {
+            "7": {
+                "id": 7,
+                "name": "analog_input",
+                "type": "ARDUINO_ANALOG_PIN_CONTROLLER",
+                "dataFields": {
+                    "pin": {
+                        "id": 10046,
+                        "name": "pin",
+                        "type": "RESOURCE_CONSUMER",
+                        "value": "A0",
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 0,
+                        "tags": {
+                            "resourceConsumer": true,
+                            "resourceType": [
+                                "ANALOG_IN"
+                            ]
+                        },
+                        "resourceName": "A0",
+                        "resourceCode": "A0"
+                    },
+                    "data": {
+                        "id": 10047,
+                        "name": "data",
+                        "type": "INTEGER",
+                        "value": 0,
+                        "group": null,
+                        "link": null,
+                        "readOnly": true,
+                        "dataSizeClass": 1,
+                        "tags": {
+                            "signalType": "data"
+                        },
+                        "control": "LINK_SYNC"
+                    }
+                },
+                "availableCommands": {},
+                "parentId": 2,
+                "blockCategory": "DRIVER"
+            },
+            "12": {
+                "id": 12,
+                "name": "output_pin",
+                "type": "ARDUINO_OUTPUT_PIN_CONTROLLER",
+                "dataFields": {
+                    "pin": {
+                        "id": 10056,
+                        "name": "pin",
+                        "type": "RESOURCE_CONSUMER",
+                        "value": "12",
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 0,
+                        "tags": {
+                            "resourceConsumer": true,
+                            "resourceType": [
+                                "DIGITAL_IO"
+                            ]
+                        },
+                        "resourceName": "D12",
+                        "resourceCode": "12"
+                    },
+                    "data": {
+                        "id": 10057,
+                        "name": "data",
+                        "type": "BOOLEAN",
+                        "value": false,
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 0,
+                        "tags": {
+                            "signalType": "data"
+                        }
+                    }
+                },
+                "availableCommands": {},
+                "parentId": 2,
+                "blockCategory": "DRIVER"
+            },
+            "13": {
+                "id": 13,
+                "name": "multiplex_analog",
+                "type": "INTEGER_BLOCK_MULTIPLEXOR",
+                "dataFields": {
+                    "ch": {
+                        "id": 10058,
+                        "name": "ch",
+                        "type": "BOOLEAN",
+                        "value": false,
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 0,
+                        "tags": {
+                            "signalType": "data"
+                        },
+                        "control": "LINK_SYNC"
+                    },
+                    "i1": {
+                        "id": 10059,
+                        "name": "i1",
+                        "type": "INTEGER",
+                        "value": "50",
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 1,
+                        "tags": {
+                            "signalType": "data"
+                        }
+                    },
+                    "i2": {
+                        "id": 10060,
+                        "name": "i2",
+                        "type": "INTEGER",
+                        "value": 0,
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 1,
+                        "tags": {
+                            "signalType": "data"
+                        }
+                    },
+                    "out": {
+                        "id": 10061,
+                        "name": "out",
+                        "type": "INTEGER",
+                        "value": 0,
+                        "group": null,
+                        "link": null,
+                        "readOnly": true,
+                        "dataSizeClass": 1,
+                        "tags": {
+                            "signalType": "data"
+                        },
+                        "control": "LINK_SYNC"
+                    }
+                },
+                "availableCommands": {},
+                "parentId": 2,
+                "blockCategory": "MODULE"
+            },
+            "14": {
+                "id": 14,
+                "name": "division",
+                "type": "INTEGER_BLOCK_DIV",
+                "dataFields": {
+                    "in1": {
+                        "id": 10062,
+                        "name": "in1",
+                        "type": "INTEGER",
+                        "value": 0,
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 1,
+                        "tags": {
+                            "signalType": "data"
+                        },
+                        "control": "LINK_SYNC"
+                    },
+                    "in2": {
+                        "id": 10063,
+                        "name": "in2",
+                        "type": "INTEGER",
+                        "value": "7",
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 1,
+                        "tags": {
+                            "signalType": "data"
+                        }
+                    },
+                    "out": {
+                        "id": 10064,
+                        "name": "out",
+                        "type": "INTEGER",
+                        "value": 0,
+                        "group": null,
+                        "link": null,
+                        "readOnly": true,
+                        "dataSizeClass": 1,
+                        "tags": {
+                            "signalType": "data"
+                        },
+                        "control": "SYNC_IN"
+                    }
+                },
+                "availableCommands": {},
+                "parentId": 2,
+                "blockCategory": "MODULE"
+            },
+            "15": {
+                "id": 15,
+                "name": "subtract",
+                "type": "INTEGER_BLOCK_SUB",
+                "dataFields": {
+                    "in1": {
+                        "id": 10065,
+                        "name": "in1",
+                        "type": "INTEGER",
+                        "value": "90",
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 1,
+                        "tags": {
+                            "signalType": "data"
+                        }
+                    },
+                    "in2": {
+                        "id": 10066,
+                        "name": "in2",
+                        "type": "INTEGER",
+                        "value": 0,
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 1,
+                        "tags": {
+                            "signalType": "data"
+                        },
+                        "control": "LINK_SYNC"
+                    },
+                    "out": {
+                        "id": 10067,
+                        "name": "out",
+                        "type": "INTEGER",
+                        "value": 0,
+                        "group": null,
+                        "link": null,
+                        "readOnly": true,
+                        "dataSizeClass": 1,
+                        "tags": {
+                            "signalType": "data"
+                        },
+                        "control": "SYNC_IN"
+                    }
+                },
+                "availableCommands": {},
+                "parentId": 2,
+                "blockCategory": "MODULE"
+            },
+            "16": {
+                "id": 16,
+                "name": "addition",
+                "type": "INTEGER_BLOCK_ADD",
+                "dataFields": {
+                    "in1": {
+                        "id": 10068,
+                        "name": "in1",
+                        "type": "INTEGER",
+                        "value": 0,
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 1,
+                        "tags": {
+                            "signalType": "data"
+                        },
+                        "control": "LINK_SYNC"
+                    },
+                    "in2": {
+                        "id": 10069,
+                        "name": "in2",
+                        "type": "INTEGER",
+                        "value": "90",
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 1,
+                        "tags": {
+                            "signalType": "data"
+                        }
+                    },
+                    "out": {
+                        "id": 10070,
+                        "name": "out",
+                        "type": "INTEGER",
+                        "value": 0,
+                        "group": null,
+                        "link": null,
+                        "readOnly": true,
+                        "dataSizeClass": 1,
+                        "tags": {
+                            "signalType": "data"
+                        },
+                        "control": "SYNC_IN"
+                    }
+                },
+                "availableCommands": {},
+                "parentId": 2,
+                "blockCategory": "MODULE"
+            },
+            "17": {
+                "id": 17,
+                "name": "logic_NOT",
+                "type": "LOGIC_BLOCK_NOT",
+                "dataFields": {
+                    "in": {
+                        "id": 10071,
+                        "name": "in",
+                        "type": "BOOLEAN",
+                        "value": false,
+                        "group": null,
+                        "link": null,
+                        "readOnly": false,
+                        "dataSizeClass": 0,
+                        "tags": {
+                            "signalType": "data"
+                        }
+                    },
+                    "out": {
+                        "id": 10072,
+                        "name": "out",
+                        "type": "BOOLEAN",
+                        "value": false,
+                        "group": null,
+                        "link": null,
+                        "readOnly": true,
+                        "dataSizeClass": 0,
+                        "tags": {
+                            "signalType": "data"
+                        },
+                        "control": "LINK_SYNC"
+                    }
+                },
+                "availableCommands": {},
+                "parentId": 2,
+                "blockCategory": "MODULE"
+            }
+        },
+        "commVectorInbound": [
+            {
+                "elementId": "7",
+                "elementName": "analog_input",
+                "portId": 10047,
+                "portName": "data",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "12",
+                "elementName": "output_pin",
+                "portId": 10057,
+                "portName": "data",
+                "elementPortDataSize": 0
+            },
+            {
+                "elementId": "13",
+                "elementName": "multiplex_analog",
+                "portId": 10058,
+                "portName": "ch",
+                "elementPortDataSize": 0
+            },
+            {
+                "elementId": "13",
+                "elementName": "multiplex_analog",
+                "portId": 10059,
+                "portName": "i1",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "13",
+                "elementName": "multiplex_analog",
+                "portId": 10060,
+                "portName": "i2",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "13",
+                "elementName": "multiplex_analog",
+                "portId": 10061,
+                "portName": "out",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "14",
+                "elementName": "division",
+                "portId": 10062,
+                "portName": "in1",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "14",
+                "elementName": "division",
+                "portId": 10063,
+                "portName": "in2",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "14",
+                "elementName": "division",
+                "portId": 10064,
+                "portName": "out",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "15",
+                "elementName": "subtract",
+                "portId": 10065,
+                "portName": "in1",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "15",
+                "elementName": "subtract",
+                "portId": 10066,
+                "portName": "in2",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "15",
+                "elementName": "subtract",
+                "portId": 10067,
+                "portName": "out",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "16",
+                "elementName": "addition",
+                "portId": 10068,
+                "portName": "in1",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "16",
+                "elementName": "addition",
+                "portId": 10069,
+                "portName": "in2",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "16",
+                "elementName": "addition",
+                "portId": 10070,
+                "portName": "out",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "17",
+                "elementName": "logic_NOT",
+                "portId": 10071,
+                "portName": "in",
+                "elementPortDataSize": 0
+            },
+            {
+                "elementId": "17",
+                "elementName": "logic_NOT",
+                "portId": 10072,
+                "portName": "out",
+                "elementPortDataSize": 0
+            }
+        ],
+        "commVectorOutbound": [
+            {
+                "elementId": "12",
+                "elementName": "output_pin",
+                "portId": 10057,
+                "portName": "data",
+                "elementPortDataSize": 0
+            },
+            {
+                "elementId": "13",
+                "elementName": "multiplex_analog",
+                "portId": 10059,
+                "portName": "i1",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "13",
+                "elementName": "multiplex_analog",
+                "portId": 10060,
+                "portName": "i2",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "14",
+                "elementName": "division",
+                "portId": 10063,
+                "portName": "in2",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "15",
+                "elementName": "subtract",
+                "portId": 10065,
+                "portName": "in1",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "16",
+                "elementName": "addition",
+                "portId": 10069,
+                "portName": "in2",
+                "elementPortDataSize": 1
+            },
+            {
+                "elementId": "17",
+                "elementName": "logic_NOT",
+                "portId": 10071,
+                "portName": "in",
+                "elementPortDataSize": 0
+            }
+        ]
+    }
+}

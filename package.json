@@ -1,0 +1,24 @@
+{
+  "name": "coreNode",
+  "version": "1.0.0",
+  "description": "System core node",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Georgi Kyuchukov",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^3.0.0",
+    "fs": "0.0.2",
+    "serialport": "6.2.0",
+    "moment": "2.18.1",
+    "winston": "2.3.1",
+    "serve-static": "1.13.1",
+    "finalhandler": "1.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2"
+  }
+}
