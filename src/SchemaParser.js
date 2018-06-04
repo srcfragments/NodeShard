@@ -4,7 +4,7 @@
 
 var fs = require('fs');
 var resourceModel = require('./resourcesModel.js');
-var modulesFactory = require('./modulesLibrary/ModulesFactory.js');
+var modulesFactory = require('../modulesLibrary/ModulesFactory.js');
 var modulesManager = require('./ModulesManager.js');
 var resourceInterface = require('./ResourceInterface.js');
 var servicesManager = require('./ServicesManager');

@@ -1,6 +1,6 @@
-var resourcesModel = require('../resourcesModel.js');
+var resourcesModel = require('../src/resourcesModel.js');
 var constantRepeaterModel = require('./ConstantRepeaterModel.js');
-var CircularBuffer = require('../CircularBuffer.js');
+var CircularBuffer = require('../src/CircularBuffer.js');
 
 var CONSTANT_REPEATER_DRIVER_MODULE_TYPE = "CONSTANT_REPEATER";
 

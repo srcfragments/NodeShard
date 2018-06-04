@@ -2,7 +2,7 @@
  * frameworkContext.js
  */
 
-var resourcesModel = require('../resourcesModel.js');
+var resourcesModel = require('../src/resourcesModel.js');
 
 var binaryStubDriver = require('./BinaryStubDriver.js');
 

@@ -1,6 +1,6 @@
-var resourcesModel = require('../resourcesModel.js');
-var CircularBuffer = require('../CircularBuffer.js');
-var dataUtils = require('../dataUtils');
+var resourcesModel = require('../src/resourcesModel.js');
+var CircularBuffer = require('../src/CircularBuffer.js');
+var dataUtils = require('../src/dataUtils');
 
 var BINARY_STUB_MODULE_TYPE = "ARDUINO_UNO";
 

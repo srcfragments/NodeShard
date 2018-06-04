@@ -1,7 +1,7 @@
-var frameworkContext = require('./frameworkContext');
-var schemaParser = require('./SchemaParser');
-var modulesManager = require('./ModulesManager');
-var servicesManager = require('./ServicesManager');
+var frameworkContext = require('./src/frameworkContext');
+var schemaParser = require('./src/SchemaParser');
+var modulesManager = require('./src/ModulesManager');
+var servicesManager = require('./src/ServicesManager');
 
 
 function init() {
