@@ -39,7 +39,7 @@ var webDataRenderer = {
         modalData.data =
             "<p>Hi all,</p>" +
             "<p>My name is Georgi Kyuchukov. A person with passion to make computers and people communicate easier with each other.</p>" +
-            "<p>How I plan to do that? By employing technologies like code generators, visual editors, domain specific languages and more, all in hope that one day we reach a stage where we can just tell the computer what we want, and leave it figure out how to do it." +
+            "<p>How I plan to do that? By employing technologies like visual editors, domain specific languages, interpreters and more, all in hope that one day we reach a stage where we can just tell the computer what we want, and leave it figure out how to do it." +
             "<p>This project was started to prove that no code solutions can be used in the development of Internet of Things</p>" +
             "<br><br>" +
             "<p>I would be happy to answer any question at: <a href='mailto:srcfragments@gmail.com' target='_top'>srcfragments@gmail.com</a></p>" +
