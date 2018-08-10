@@ -43,10 +43,10 @@ var defaultHTMLRender = {
         for (var fieldId in element.dataFields) {
             var field = element.dataFields[fieldId];
 
-            if (element.left_ports.indexOf(field.id) == -1 &&
-                element.right_ports.indexOf(field.id) == -1 &&
-                element.top_ports.indexOf(field.id) == -1 &&
-                element.bottom_ports.indexOf(field.id) == -1) {
+            if (element.left.indexOf(field.id) == -1 &&
+                element.right.indexOf(field.id) == -1 &&
+                element.top.indexOf(field.id) == -1 &&
+                element.bottom.indexOf(field.id) == -1) {
                 properties[field.id] = field;
             }
         }
@@ -55,9 +55,8 @@ var defaultHTMLRender = {
     renderDataPortPropertiesHTML: function (element, fieldName, field) {
         var selectedDataPort = field;
         var classNames = "col-xs-11 property";
-
         var html = [];
-        html.push('port name: ' + fieldName + '<br>');
+        html.push('<div class="${className}"><label>port name:  ' + fieldName + '</label><br></div>');
         html.push("<br>");
         html.push("<br>");
 
@@ -99,7 +98,7 @@ var defaultHTMLRender = {
         var selector = "DATAFIELD:" + element.id + ":" + field.name;
         var enabled = field.controllable;
 
-        return this.renderProperty(selector, type, "port value", value, enabled, classNames);
+        return this.renderProperty(selector, type, "Value", value, enabled, classNames);
     },
 
     renderHTMLButton: function(selector, name, description) {
@@ -143,7 +142,9 @@ var defaultHTMLRender = {
             checked = " checked ";
         }
 
-        var html = '<input id="' + element.id + '" +  type="checkbox" ' + disabled + ' ' + checked + ' onchange="defaultHTMLRender.processSelectionForMonitoring(this, \'' + element.id +  '\', \'' + port.name + '\')"> ';
+        var html = '<div class="col-xs-11 property"><label>Monitor: </label>' +
+                   '<input id="' + element.id + '" +  type="checkbox" ' + disabled + ' ' + checked + ' onchange="defaultHTMLRender.processSelectionForMonitoring(this, \'' + element.id +  '\', \'' + port.name + '\')"> ' +
+                   ' </div>';
         return html;
     },
 

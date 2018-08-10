@@ -72,6 +72,15 @@
     max-width: 200px;
 }
 
+.element-properties select {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    width: 74%;
+    max-width: 200px;
+}
+
 .element-properties .property label {
     text-transform: capitalize;
     min-width: 50px;

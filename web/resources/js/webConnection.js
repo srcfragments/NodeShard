@@ -10,7 +10,7 @@ if (loc.protocol === "https:") {
 } else {
     new_uri = "ws:";
 }
-new_uri += "//localhost:8000/";
+new_uri += "//" + hostMachineNetAddress + ":8000/";
 
 
 console.log(new_uri);

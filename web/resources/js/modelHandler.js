@@ -49,7 +49,7 @@ var modelHandler = {
                     var existingDataField = this.DATA_FIELDS_BY_ID[dataField.id];
                     existingDataField.type = dataField.type;
                     existingDataField.value = dataField.value;
-                    existingDataField.controllable = dataPort.controllable;
+                    existingDataField.controllable = dataField.controllable;
                 }
             }
 
@@ -143,7 +143,7 @@ var modelHandler = {
     },
 
     modelSelectLink: function(graphLinkId) {
-        var link = this.MODEL_ACTIVE_LINKS[linkId];
+        var link = this.MODEL_ACTIVE_LINKS[graphLinkId];
         return JSON.stringify(link);
     },
 

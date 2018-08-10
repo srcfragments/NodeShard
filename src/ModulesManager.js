@@ -1,9 +1,7 @@
 /**
  * Created by gkyuchukov on 14.10.17.
  */
-var frameworkContext = require('./frameworkContext.js');
 var resourceModel = require('./resourcesModel.js');
-var comUtilities = require('./ComUtilities.js');
 var resourceInterface = require('./ResourceInterface.js');
 
 var modules = {};

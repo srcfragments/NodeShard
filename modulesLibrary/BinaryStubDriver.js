@@ -14,9 +14,6 @@ function BinaryStubModule(moduleResource){
     this.moduleResource = moduleResource;
     this.id = this.moduleResource.id;
 
-    this.configurationVersion = 0;
-    this.reconfigureSyncOut = false;
-
     this.stubType = true;
     this.commDriver = null;
     this.commChannel = null;
@@ -42,15 +39,6 @@ BinaryStubModule.prototype={
 
     processTick: function() {
     },
-
-
-
-    getDataField: function (fieldName) {
-        var dataField = this.moduleResource.dataFields[fieldName];
-
-        return dataField;
-    },
-
 
     getType: function() {
         return BINARY_STUB_MODULE_TYPE;

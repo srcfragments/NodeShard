@@ -6,23 +6,26 @@ if (typeof _LIBRARY_OF_VIEWS_ === 'undefined') {
     _LIBRARY_OF_VIEWS_ = {};
 }
 
-// _LIBRARY_OF_VIEWS_["DEFAULT"] = function(element) {
-//     // default view
-//     var m = new joint.shapes.devs.Model({
-//         position: {x: 50, y: 50},
-//         size: {width: element.view.sizex, height: element.view.sizey},
-//         inPorts: Object.keys(element.input_ports),
-//         outPorts: Object.keys(element.output_ports),
-//         attrs: {
-//             '.label': {text: element.name, 'ref-x': .4, 'ref-y': .2},
-//             rect: {fill: '#2ECC71'},
-//             '.inPorts circle': {fill: '#16A085', magnet: 'passive', type: 'input'},
-//             '.outPorts circle': {fill: '#E74C3C', type: 'output'}
-//         }
-//     });
-//
-//     return m;
-// }
+if (typeof _LIBRARY_OF_PORT_VIEWS_ === 'undefined') {
+    _LIBRARY_OF_PORT_VIEWS_ = {};
+}
+
+
+
+const GET_DEFAULT_PORT = function (name, group) {
+    var port = {
+        id: name,
+        group: group,
+        attrs: { text: { text: name } },
+    };
+
+    return port;
+}
+
+_LIBRARY_OF_PORT_VIEWS_["DEFAULT"] = function (name, group) {
+    return GET_DEFAULT_PORT(name, group);
+}
+
 
 const GET_DEFAULT_NODE = ({positionName, portLabelFill, portBodyFill, portBodyStroke, portBodyR})=> {
     return {
@@ -56,10 +59,10 @@ _LIBRARY_OF_VIEWS_["DEFAULT"] = function(element) {
     let m = new joint.shapes.devs.ModelTEST({
         position: {x: 50, y: 50},
         size: {width: element.view.sizex, height: element.view.sizey},
-        leftPorts: element.left_ports,
-        rightPorts: element.right_ports,
-        topPorts: element.top_ports,
-        bottomPorts: element.bottom_ports,
+        left: element.left_ports,
+        right: element.right_ports,
+        top: element.top_ports,
+        bottom: element.bottom_ports,
 
 
         attrs: {
@@ -131,10 +134,10 @@ joint.shapes.devs.ModelTEST = joint.shapes.basic.Generic.extend({
         //var inPorts = _.uniq(this.get('inPorts'));
         //var outPorts = _.difference(_.uniq(this.get('outPorts')), inPorts);
 
-        var leftPorts = this.get('leftPorts');
-        var rightPorts = this.get('rightPorts');
-        var topPorts = this.get('topPorts');
-        var bottomPorts = this.get('bottomPorts');
+        var leftPorts = this.get('left');
+        var rightPorts = this.get('right');
+        var topPorts = this.get('top');
+        var bottomPorts = this.get('bottom');
 
         var leftPortItems = this.createPortItems('left', leftPorts);
         var rightPortItems = this.createPortItems('right', rightPorts);
@@ -171,22 +174,22 @@ joint.shapes.devs.ModelTEST = joint.shapes.basic.Generic.extend({
 
     addLeftPort: function(port, opt) {
 
-        return this._addGroupPort(port, 'leftPorts', opt);
+        return this._addGroupPort(port, 'left', opt);
     },
 
     addRightPort: function(port, opt) {
 
-        return this._addGroupPort(port, 'rightPorts', opt);
+        return this._addGroupPort(port, 'right', opt);
     },
 
     addTopPort: function(port, opt) {
 
-        return this._addGroupPort(port, 'topPorts', opt);
+        return this._addGroupPort(port, 'top', opt);
     },
 
     addBottomPort: function(port, opt) {
 
-        return this._addGroupPort(port, 'bottomPorts', opt);
+        return this._addGroupPort(port, 'bottom', opt);
     },
 
     _removeGroupPort: function(port, group, opt) {
@@ -196,22 +199,22 @@ joint.shapes.devs.ModelTEST = joint.shapes.basic.Generic.extend({
 
     removeLeftPort: function(port, opt) {
 
-        return this._removeGroupPort(port, 'leftPorts', opt);
+        return this._removeGroupPort(port, 'left', opt);
     },
 
     removeRightPort: function(port, opt) {
 
-        return this._removeGroupPort(port, 'rightPorts', opt);
+        return this._removeGroupPort(port, 'right', opt);
     },
 
     removeTopPort: function(port, opt) {
 
-        return this._removeGroupPort(port, 'topPorts', opt);
+        return this._removeGroupPort(port, 'top', opt);
     },
 
     removeBottomPort: function(port, opt) {
 
-        return this._removeGroupPort(port, 'bottomPorts', opt);
+        return this._removeGroupPort(port, 'bottom', opt);
     },
 
     _changeGroup: function(group, properties, opt) {

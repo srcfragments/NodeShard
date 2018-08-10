@@ -16,6 +16,9 @@ function readJsonFromFile(filePath) {
 
 function parseSchema(schema, localMachineConfig) {
     var localMachineId = localMachineConfig.localMachineId;
+    var localMachineNetAddress = localMachineConfig.localMachineNetAddress;
+
+    resourceInterface.setLocalNodeConfig(localMachineConfig);
 
     for (var machineId in schema) {
         var machine = schema[machineId];

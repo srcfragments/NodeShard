@@ -6,6 +6,7 @@
 var frameworkContext = require('./frameworkContext');
 var serialComHandler = require('./SerialComHandler');
 var webServer = require('./WebServer.js');
+var exposedInterface = require('./ExposedInterface.js');
 
 var activeServices = {};
 
@@ -23,6 +24,11 @@ function serviceInitializer(serviceNode) {
     if (serviceNode.id == "WEB_SERVER") {
         webServer.init(serviceNode);
         return webServer;
+    }
+
+    if (serviceNode.id == "EXPOSED_INTERFACE") {
+        exposedInterface.init(serviceNode);
+        return exposedInterface;
     }
 
     return null;

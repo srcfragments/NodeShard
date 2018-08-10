@@ -44,7 +44,7 @@ var elementsFactory = {
             },
 
             "view" : {
-                "display_layer":3,
+                "display_layer": 4,
                 "sizex": 100,
                 "sizey": 50,
                 "view_type": "normal",

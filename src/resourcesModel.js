@@ -105,7 +105,6 @@ function ServiceResource(){
     this.name = null;
     this.type = null;
     this.dataFields = {};
-    this.configurationVersion = 0;
     this.parentId = 0;
 }
 
@@ -142,7 +141,6 @@ function ModuleResource(){
     this.name = null;
     this.active = false;
     this.dataFields = {};
-    this.configurationVersion = 0;
     this.parentId = 0;
 
 }
@@ -235,6 +233,7 @@ function initDataField(moduleResource, dataFieldConfigs) {
     dataField.resourceCode = dataFieldConfigs.resourceCode;
 
     dataField.calcolateIsControllable();
+    dataField.calcolateIsExposed(moduleResource, dataFieldConfigs);
     return dataField;
 }
 
@@ -280,6 +279,18 @@ DataFieldResource.prototype={
             this.controllable = false;
         }
     },
+
+    calcolateIsExposed: function(moduleResource, dataFieldConfigs) {
+        if ((moduleResource.type == "EXPOSED_MONITOR" || moduleResource.type == "EXPOSED_CONTROLLER") &&  dataFieldConfigs.name == "data") {
+                this.isExposed = true;
+                this.exposedId = moduleResource.name;
+                this.exposedType = moduleResource.type;
+        } else {
+            this.isExposed = false;
+            this.exposedId = '';
+            this.exposedType = null;
+        }
+    }
 
 };
 

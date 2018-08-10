@@ -22,8 +22,8 @@ _LIBRARY_OF_ELEMENTS_["LABEL_ELEMENT"] = function () {
         "properties": {},
 
         "view": {
-            "display_layer": 4,
-            "sizex": 100,
+            "display_layer": 10,
+            "sizex": 120,
             "sizey": 20,
             "view_type": "normal",
             "resizeable": false,

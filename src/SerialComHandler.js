@@ -197,10 +197,6 @@ PortHandler.prototype={
 function processPackage(channel, type, dt) {
     channel.inactivityTimer = 0;
 
-    if (channel.portName == "/dev/ttyACM1") {
-        console.log("ch:  " + channel.portName + "  type:  " + type + "   dt:  " + dt);
-    }
-
     var messageHandler = messageHandlers[type];
     if (messageHandler != null && messageHandler != undefined) {
         messageHandler(channel, "serialComHandler", dt);
@@ -211,11 +207,8 @@ function processPackage(channel, type, dt) {
 var tickTmer = null;
 
 function SerialComHandlerTick() {
-
     syncOutVectors();
-
     portsProcess();
-
 }
 
 function portsProcess() {
@@ -269,13 +262,8 @@ function syncOutVectors() {
             if (commVectors != null && commVectors != undefined &&
                 commVectors.commVectorOutbound != null && commVectors.commVectorOutbound != undefined)
             {
-
                     var message = generateSyncOutVectorMessage(commVectors.commVectorOutbound);
-                if (commChannel == "/dev/ttyACM0") {
-                    console.log("ch:  " + commChannel + "  msg:  " + message);
-                }
                     sendMessage(commChannel, comUtilities.CONSTANTS.COMM_MSG_TYPE_SYNC_IN_VECTOR_DATA, message);
-
             }
         }
     }
@@ -295,7 +283,7 @@ function generateSyncOutVectorMessage(commVector) {
             dataUtils.writeLowLevelVal(dataField, dataVector);
         }
     }
-    //return [0,57,0,0,0,90,0,90];
+
     return dataVector.getDataAsArray();
 }
 
@@ -336,30 +324,11 @@ function handleSyncInMessage(channel, driver, data) {
 
                    var value = dataUtils.readLowLevelVal(dataField, buff);
 
-                   if (value == null || value == undefined || value == 0) {
-                       var t =6;
-                   }
-
-                   if (dataField.controllable != true) {
+                   if (dataField.controllable != true && dataField.control != "SYNC_OUT") {
                        dataField.setValue(value);
                    }
                }
            }
-        }
-    }
-}
-
-
-
-
-function handleCommandResponseMessage(channel, driver, data) {
-    var buff = new CircularBuffer(data);
-    var moduleId = buff.readShort();
-
-    var module = modulesManager.getModule(moduleId);
-    if (module != null && module != undefined) {
-        if (module.stubType == true) {
-            module.syncInCommandResult(buff);
         }
     }
 }
@@ -396,7 +365,6 @@ function sendMessage (channel, type, data) {
 
 messageHandlers[comUtilities.CONSTANTS.COMM_MSG_TYPE_IDENTIFY] = handleIdentificationMessage;
 messageHandlers[comUtilities.CONSTANTS.COMM_MSG_TYPE_SYNC_OUT_VECTOR_DATA] = handleSyncInMessage;
-messageHandlers[comUtilities.CONSTANTS.COMM_MSG_TYPE_COMMAND_RESPONSE] = handleCommandResponseMessage;
 
 module.exports = {
     addMessageHandler: function (type, handler) {
@@ -418,7 +386,7 @@ module.exports = {
 
     start: function() {
         var ScanTimer = setInterval(SerialPortScan, 1000);
-        var tickTmer = setInterval(SerialComHandlerTick, 200);
+        var tickTmer = setInterval(SerialComHandlerTick, 100);
     },
 
     stop: function() {

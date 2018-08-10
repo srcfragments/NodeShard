@@ -4,13 +4,25 @@
 var frameworkContext = require('./frameworkContext.js');
 var resourceModel = require('./resourcesModel.js');
 
+var localNodeConfiguration = {}
+
 var rootNode = {
     localNode: null,
     remoteNodes: {}
 };
+
 var resourcesById = {};
-var configurationVersion = 0;
-var controllableDataPortsForDevice = {};
+var exposedPortsById = {};
+
+
+// local node configuration
+function setLocalNodeConfig(localNodeConfig) {
+    localNodeConfiguration = localNodeConfig;
+}
+
+function getPropertyFromLocalNodeConfig(propertName) {
+    return localNodeConfiguration[propertName];
+}
 
 
 // update the structure of the machines resources
@@ -19,7 +31,6 @@ function updateLocalNodeResources(node) {
     if (resourceModel.validateNodeDeep(node) == true) {
         mapResourcesIds(node);
         rootNode.localNode = node;
-        configurationVersion++;
     }
 }
 
@@ -27,7 +38,6 @@ function updateRemoteNodeResources(node) {
     if (resourceModel.validateNodeDeep(node) == true) {
         mapResourcesIds(node);
         rootNode.remoteNodes[node.id] = node;
-        configurationVersion++;
     }
 }
 
@@ -41,6 +51,10 @@ function mapResourcesIds(node) {
         for (var i in module.dataFields) {
             var dataField = module.dataFields[i];
             resourcesById[dataField.id] = dataField;
+
+            if (dataField.isExposed == true) {
+                exposedPortsById[dataField.exposedId] = dataField;
+            }
         }
     }
 }
@@ -53,37 +67,6 @@ function getCommVectorsForDevice(deviceId) {
     }
 
     return null;
-}
-
-// interfaces to update modules and ports configs and data
-//
-
-function updateDataFieldsValues(values) {
-    for (var portId in values) {
-        var data = values[portId];
-        var dataField = resourcesById[portId];
-
-        if (dataField != null && dataField != undefined && dataField instanceof resourceModel.DataFieldResource) {
-            dataField.setValue(data);
-        }
-    }
-}
-
-
-
-//[{id:id, config:newCOnfig}]
-function updateModulesConfigs(configs) {
-
-    for (var moduleId in configs) {
-        var moduleConfig = configs[moduleId];
-        var module = resourcesById[moduleId];
-
-        if (module != null && module != undefined && module instanceof resourceModel.ModuleResource) {
-            module.reconfigure(moduleConfig);
-        }
-    }
-
-    configurationVersion++;
 }
 
 
@@ -157,6 +140,20 @@ function getResourcesStructure() {
     return structure;
 }
 
+// interfaces to query and update modules and ports data
+//
+
+function updateDataFieldsValues(values) {
+    for (var portId in values) {
+        var data = values[portId];
+        var dataField = resourcesById[portId];
+
+        if (dataField != null && dataField != undefined && dataField instanceof resourceModel.DataFieldResource) {
+            dataField.setValue(data);
+        }
+    }
+}
+
 function getMonitoredData(elementIds) {
     var res = {};
 
@@ -171,22 +168,46 @@ function getMonitoredData(elementIds) {
     return res;
 }
 
+function getExposedInterfacesData() {
+    var result = {};
+
+    for (var id in exposedPortsById) {
+        var exposedPort = exposedPortsById[id];
+        result[id] = {
+            name: exposedPort.exposedId,
+            type: exposedPort.exposedType,
+            dataType: exposedPort.type,
+            value: exposedPort.value
+        }
+    }
+
+    return result;
+
+}
+
+function setValueToExportInterfaces(values) {
+    for (var portId in values) {
+        var data = values[portId];
+        var dataField = exposedPortsById[portId];
+
+        if (dataField != null && dataField != undefined && dataField instanceof resourceModel.DataFieldResource) {
+            dataField.setValue(data);
+        }
+    }
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////
 
 
-function getConfigurationVersion() {
-    return configurationVersion
-}
-
-
-
 module.exports = {
+    setLocalNodeConfig: setLocalNodeConfig,
+    getPropertyFromLocalNodeConfig: getPropertyFromLocalNodeConfig,
+
     updateLocalNodeResources: updateLocalNodeResources,
     updateRemoteNodeResources: updateRemoteNodeResources,
 
     updateDataFieldsValues: updateDataFieldsValues,
-    updateModulesConfigs: updateModulesConfigs,
 
     getResourcesById: getResourcesById,
     getResourcesByPath: getResourcesByPath,
@@ -196,5 +217,6 @@ module.exports = {
     getResourcesStructure: getResourcesStructure,
     getMonitoredData: getMonitoredData,
 
-    getConfigurationVersion:getConfigurationVersion
+    setValueToExportInterfaces: setValueToExportInterfaces,
+    getExposedInterfacesData: getExposedInterfacesData,
 }

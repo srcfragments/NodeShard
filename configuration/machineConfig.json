@@ -1,3 +1,4 @@
 {
-    "localMachineId": "0"
+    "localMachineId": 0,
+    "localMachineNetAddress": "localhost"
 }
